@@ -6,8 +6,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication
 public class OnlineGameApiApplication {
 
-	public static void main(String[] args) {
-		SpringApplication.run(OnlineGameApiApplication.class, args);
-	}
+    public static void main(String[] args) {
+        SpringApplication.run(OnlineGameApiApplication.class, args);
+    }
 
 }
