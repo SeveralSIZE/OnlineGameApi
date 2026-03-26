@@ -39,6 +39,9 @@ public class User {
     @Convert(converter = RoleConverter.class)
     private Role role;
 
+    @Column(name = "coins", nullable = false)
+    private Integer coins;
+
     @PrePersist
     private void prePersist(){
         this.id = UUID.randomUUID();

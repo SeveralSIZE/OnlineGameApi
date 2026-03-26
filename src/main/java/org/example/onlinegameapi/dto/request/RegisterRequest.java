@@ -10,7 +10,7 @@ import org.example.onlinegameapi.enums.Role;
 
 @Data
 @NoArgsConstructor
-public class CreateUserRequest {
+public class RegisterRequest {
     @NotBlank
     private String userName;
 
