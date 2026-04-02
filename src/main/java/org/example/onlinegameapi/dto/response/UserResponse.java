@@ -12,4 +12,5 @@ public class UserResponse {
     private String userName;
     private OffsetDateTime creationDate;
     private Role role;
+    private int coins;
 }

@@ -23,6 +23,7 @@ public class UserMapper {
                 .userName(user.getUserName())
                 .role(user.getRole())
                 .creationDate(user.getCreationDate())
+                .coins(user.getCoins())
                 .build();
     }
 }

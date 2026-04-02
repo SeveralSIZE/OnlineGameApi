@@ -46,5 +46,6 @@ public class User {
     private void prePersist(){
         this.id = UUID.randomUUID();
         this.creationDate = OffsetDateTime.now();
+        this.coins = 0;
     }
 }

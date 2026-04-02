@@ -1,8 +1,6 @@
 package org.example.onlinegameapi.handler;
 
-import org.example.onlinegameapi.exception.UnauthorizedException;
-import org.example.onlinegameapi.exception.UserNotFoundException;
-import org.example.onlinegameapi.exception.WrongPasswordException;
+import org.example.onlinegameapi.exception.*;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -14,6 +12,21 @@ public class GlobalExceptionHandler {
     @ExceptionHandler(UserNotFoundException.class)
     public ResponseEntity<String> handleUserNotFound(UserNotFoundException exception){
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body(exception.getMessage());
+    }
+
+    @ExceptionHandler(CardNotFoundException.class)
+    public ResponseEntity<String> handleCardNotFound(CardNotFoundException exception){
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(exception.getMessage());
+    }
+
+    @ExceptionHandler(CaseNotFoundException.class)
+    public ResponseEntity<String> handleCaseNotFound(CaseNotFoundException exception){
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(exception.getMessage());
+    }
+
+    @ExceptionHandler(NotEnoughCoinsException.class)
+    public ResponseEntity<String> handleNotEnoughCoins(NotEnoughCoinsException exception){
+        return ResponseEntity.status(HttpStatus.PAYMENT_REQUIRED).body(exception.getMessage());
     }
 
     @ExceptionHandler(WrongPasswordException.class)

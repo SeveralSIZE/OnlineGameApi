@@ -30,7 +30,7 @@ public class Card {
     @Column(name = "rarity", nullable = false)
     private Rarity rarity;
 
-    @Column(name = "icon_url", nullable = false)
+    @Column(name = "icon_url")
     private String iconUrl;
 
     @PrePersist
