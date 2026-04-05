@@ -47,6 +47,7 @@ public class GameServiceImpl implements GameService {
 
         if(userCard.getAmount() > 1){
             userCard.setAmount(userCard.getAmount() - 1);
+            userCardRepository.save(userCard);
         }
         else{
             userCardRepository.delete(userCard);
@@ -54,6 +55,8 @@ public class GameServiceImpl implements GameService {
 
         int sellPrice = getSellPrice(userCard.getCard().getRarity());
         user.setCoins(user.getCoins() + sellPrice);
+
+        userRepository.save(user);
 
         return SellResponse.builder()
                 .coins(user.getCoins())
@@ -64,11 +67,11 @@ public class GameServiceImpl implements GameService {
     private int getSellPrice(Rarity rarity) {
         int basePrice = switch (rarity) {
             case COMMON -> 10;
-            case UNCOMMON -> 45;
-            case RARE -> 150;
+            case UNCOMMON -> 40;
+            case RARE -> 125;
             case EPIC -> 500;
-            case LEGENDARY -> 2000;
-            case ETERNAL -> 10000;
+            case LEGENDARY -> 2500;
+            case ETERNAL -> 12000;
         };
 
         float multiplier = 0.9f + random.nextFloat() * 0.2f;
