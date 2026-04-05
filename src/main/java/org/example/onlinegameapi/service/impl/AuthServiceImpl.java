@@ -31,7 +31,7 @@ public class AuthServiceImpl implements AuthService {
     private final UserMapper userMapper;
     private final JwtService jwtService;
 
-    @Value("${jwt.access-token-expiration}")
+    @Value("${jwt.refresh-token-expiration}")
     private long refreshTokenExpiration;
 
     private String generateRefreshToken(User user){

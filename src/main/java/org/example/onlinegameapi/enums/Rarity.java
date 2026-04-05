@@ -6,6 +6,5 @@ public enum Rarity {
     RARE,
     EPIC,
     LEGENDARY,
-    MYTHIC,
     ETERNAL
 }

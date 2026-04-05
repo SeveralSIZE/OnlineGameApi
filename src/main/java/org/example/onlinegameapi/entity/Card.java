@@ -5,6 +5,7 @@ import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.example.onlinegameapi.converter.RarityConverter;
 import org.example.onlinegameapi.enums.Rarity;
 
 import java.time.OffsetDateTime;
@@ -28,6 +29,7 @@ public class Card {
     private String description;
 
     @Column(name = "rarity", nullable = false)
+    @Convert(converter = RarityConverter.class)
     private Rarity rarity;
 
     @Column(name = "icon_url")

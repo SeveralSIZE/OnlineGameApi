@@ -102,18 +102,17 @@ public class CaseServiceImpl implements CaseService {
     }
 
     private Rarity rollRarity(Case caseEntity){
-        Map<Rarity, Integer> chances = new LinkedHashMap<>();
+        Map<Rarity, Float> chances = new LinkedHashMap<>();
         chances.put(Rarity.ETERNAL, caseEntity.getEternalChance());
-        chances.put(Rarity.MYTHIC, caseEntity.getMythicChance());
         chances.put(Rarity.LEGENDARY, caseEntity.getLegendaryChance());
         chances.put(Rarity.EPIC, caseEntity.getEpicChance());
         chances.put(Rarity.RARE, caseEntity.getRareChance());
         chances.put(Rarity.UNCOMMON, caseEntity.getUncommonChance());
         chances.put(Rarity.COMMON, caseEntity.getCommonChance());
 
-        int roll = random.nextInt(100);
-        int cumulative = 0;
-        for(Map.Entry<Rarity, Integer> entry : chances.entrySet()){
+        float roll = random.nextFloat() * 100;
+        float cumulative = 0;
+        for(Map.Entry<Rarity, Float> entry : chances.entrySet()){
             cumulative += entry.getValue();
             if(roll < cumulative) return entry.getKey();
         }

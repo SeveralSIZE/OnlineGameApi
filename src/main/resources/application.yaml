@@ -26,3 +26,7 @@ jwt:
   secret: супер_мега_гипер_ультра_секретный_пароль
   access-token-expiration: 900000         # 15 минут
   refresh-token-expiration: 2592000000    # 30 дней
+
+logging:
+  level:
+    org.springframework.security: DEBUG

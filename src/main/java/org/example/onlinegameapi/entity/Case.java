@@ -25,25 +25,22 @@ public class Case {
     private Integer price;
 
     @Column(name = "common_chance", nullable = false)
-    private Integer commonChance;
+    private Float commonChance;
 
     @Column(name = "uncommon_chance", nullable = false)
-    private Integer uncommonChance;
+    private Float uncommonChance;
 
     @Column(name = "rare_chance", nullable = false)
-    private Integer rareChance;
+    private Float rareChance;
 
     @Column(name = "epic_chance", nullable = false)
-    private Integer epicChance;
+    private Float epicChance;
 
     @Column(name = "legendary_chance", nullable = false)
-    private Integer legendaryChance;
-
-    @Column(name = "mythic_chance", nullable = false)
-    private Integer mythicChance;
+    private Float legendaryChance;
 
     @Column(name = "eternal_chance", nullable = false)
-    private Integer eternalChance;
+    private Float eternalChance;
 
     @PrePersist
     private void prePersist(){

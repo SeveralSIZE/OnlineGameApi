@@ -14,11 +14,10 @@ public class CreateCaseRequest {
     @NotNull
     private Integer price;
 
-    private Integer commonChance;
-    private Integer uncommonChance;
-    private Integer rareChance;
-    private Integer epicChance;
-    private Integer legendaryChance;
-    private Integer mythicChance;
-    private Integer eternalChance;
+    private Float commonChance;
+    private Float uncommonChance;
+    private Float rareChance;
+    private Float epicChance;
+    private Float legendaryChance;
+    private Float eternalChance;
 }

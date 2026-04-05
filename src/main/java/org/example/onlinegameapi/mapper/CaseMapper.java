@@ -18,7 +18,6 @@ public class CaseMapper {
         entity.setRareChance(request.getRareChance());
         entity.setEpicChance(request.getEpicChance());
         entity.setLegendaryChance(request.getLegendaryChance());
-        entity.setMythicChance(request.getMythicChance());
         entity.setEternalChance(request.getEternalChance());
 
         return entity;
