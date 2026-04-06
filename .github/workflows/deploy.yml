@@ -1,0 +1,25 @@
+name: deploy app
+
+env:
+  APP_NAME: online-game-server
+  DEPLOY_PATH: /opt/online-game-server
+
+on:
+  push:
+    branches: [ master ]
+
+jobs:
+  deploy:
+    runs-on: self-hosted
+
+    steps:
+    - name: checkout code
+      uses: actions/checkout@v4
+
+    - name: build
+      run: mvn clean package -DskipTests
+
+    - name: deploy
+      run:
+        sudo cp target/*.jar $DEPLOY_PATH/$APP_NAME.jar
+        sudo systemctl restart $APP_NAME.service
