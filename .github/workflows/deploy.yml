@@ -4,6 +4,10 @@ env:
   APP_NAME: online-game-server
   DEPLOY_PATH: /opt/online-game-server
 
+defaults:
+  run:
+    working-directory: ./my-app-folder
+
 on:
   push:
     branches: [ master ]
@@ -20,6 +24,6 @@ jobs:
       run: mvn clean package -DskipTests
 
     - name: deploy
-      run:
+      run:  |
         sudo cp target/*.jar $DEPLOY_PATH/$APP_NAME.jar
         sudo systemctl restart $APP_NAME.service
