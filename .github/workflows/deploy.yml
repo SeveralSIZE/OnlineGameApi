@@ -4,10 +4,6 @@ env:
   APP_NAME: online-game-server
   DEPLOY_PATH: /opt/online-game-server
 
-defaults:
-  run:
-    working-directory: ./my-app-folder
-
 on:
   push:
     branches: [ master ]
