@@ -23,3 +23,5 @@ jobs:
       run:  |
         sudo cp target/*.jar $DEPLOY_PATH/$APP_NAME.jar
         sudo systemctl restart $APP_NAME.service
+        sudo chown $APP_NAME:$APP_NAME $DEPLOY_PATH/$APP_NAME.jar
+        sudo chmod 755 $DEPLOY_PATH/$APP_NAME.jar
