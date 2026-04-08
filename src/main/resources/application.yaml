@@ -26,10 +26,14 @@ management:
   endpoints:
     web:
       exposure:
-        include: prometheus
+        include: prometheus, health
       base-path: /
       path-mapping:
         prometheus: metrics
+
+  endpoint:
+    prometheus:
+      enabled: true
 
 jwt:
   secret: супер_мега_гипер_ультра_секретный_пароль
