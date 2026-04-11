@@ -41,5 +41,15 @@ jwt:
   refresh-token-expiration: 2592000000    # 30 дней
 
 logging:
+  file:
+    name: /var/log/online-game-server/app.log
+
   level:
     org.springframework.security: DEBUG
+    org.example.onlinegameapi: DEBUG
+
+  logback:
+    rollingpolicy:
+      max-file-size: 100MB
+      max-history: 7
+      file-name-pattern: /var/log/myapp/app-%d{yyyy-MM-dd}.%i.log

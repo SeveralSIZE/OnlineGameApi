@@ -5,7 +5,7 @@ Backend-сервис на базе Spring Boot для обеспечения р�
 
 ## Технологический стек
 
-* **Framework:** Spring Boot 3.x (Web, Data JPA, Security)
+* **Framework:** Spring Boot 4.x (Web, Data JPA, Security)
 * **Language:** Java 17+
 * **Database:** PostgreSQL
 * **Monitoring:** Prometheus & Grafana
