@@ -29,6 +29,6 @@ jobs:
           ssh vboxuser@k8s-worker2 "sudo ctr -n k8s.io images import /tmp/$APP_NAME.tar && rm /tmp/$APP_NAME.tar"
           rm -f /tmp/$APP_NAME.tar
 
-      - run: kubectl set image deployment/$APP_NAME $APP_NAME=$DOCKER_IMAGE:latest -n $NAMESPACE
+      - run: kubectl rollout restart deployment/$APP_NAME -n $NAMESPACE
 
       - run: kubectl rollout status deployment/$APP_NAME -n $NAMESPACE --timeout=120s
