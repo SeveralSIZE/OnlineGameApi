@@ -25,10 +25,10 @@ jobs:
       - run: |
           docker save $DOCKER_IMAGE:latest -o /tmp/$APP_NAME.tar
           sudo ctr -n k8s.io images import /tmp/$APP_NAME.tar
-          scp /tmp/$APP_NAME.tar user@k8s-worker1:/tmp/
-          scp /tmp/$APP_NAME.tar user@k8s-worker2:/tmp/
-          ssh user@k8s-worker1 "sudo ctr -n k8s.io images import /tmp/$APP_NAME.tar && rm /tmp/$APP_NAME.tar"
-          ssh user@k8s-worker2 "sudo ctr -n k8s.io images import /tmp/$APP_NAME.tar && rm /tmp/$APP_NAME.tar"
+          scp /tmp/$APP_NAME.tar vboxuser@k8s-worker1:/tmp/
+          scp /tmp/$APP_NAME.tar vboxuser@k8s-worker2:/tmp/
+          ssh vboxuser@k8s-worker1 "sudo ctr -n k8s.io images import /tmp/$APP_NAME.tar && rm /tmp/$APP_NAME.tar"
+          ssh vboxuser@k8s-worker2 "sudo ctr -n k8s.io images import /tmp/$APP_NAME.tar && rm /tmp/$APP_NAME.tar"
           rm /tmp/$APP_NAME.tar
 
       - run: kubectl set image deployment/$APP_NAME $APP_NAME=$DOCKER_IMAGE:latest -n $NAMESPACE
