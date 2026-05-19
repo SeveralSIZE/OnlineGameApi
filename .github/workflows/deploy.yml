@@ -29,7 +29,7 @@ jobs:
           scp /tmp/$APP_NAME.tar vboxuser@k8s-worker2:/tmp/
           ssh vboxuser@k8s-worker1 "sudo ctr -n k8s.io images import /tmp/$APP_NAME.tar && rm /tmp/$APP_NAME.tar"
           ssh vboxuser@k8s-worker2 "sudo ctr -n k8s.io images import /tmp/$APP_NAME.tar && rm /tmp/$APP_NAME.tar"
-          rm /tmp/$APP_NAME.tar
+          rm -f /tmp/$APP_NAME.tar
 
       - run: kubectl set image deployment/$APP_NAME $APP_NAME=$DOCKER_IMAGE:latest -n $NAMESPACE
 
