@@ -23,7 +23,7 @@ public class AuthController {
 
     @PostMapping("/ping")
     public ResponseEntity<String> ping() {
-        return ResponseEntity.ok("pong");
+        return ResponseEntity.ok("pong2");
     }
 
     @PostMapping("/login")
