@@ -21,6 +21,11 @@ import org.springframework.web.bind.annotation.RestController;
 public class AuthController {
     private final AuthService service;
 
+    @PostMapping("/ping")
+    public ResponseEntity<String> ping() {
+        return ResponseEntity.ok("pong");
+    }
+
     @PostMapping("/login")
     public ResponseEntity<TokensResponse> login(@RequestBody @Valid LoginRequest request) {
         return ResponseEntity.ok(service.login(request));
