@@ -18,6 +18,8 @@ jobs:
 
       - run: mvn clean package -DskipTests
 
+      - run: ls target/*.jar
+
       - run: docker build -t $DOCKER_IMAGE:latest .
 
       - run: |
