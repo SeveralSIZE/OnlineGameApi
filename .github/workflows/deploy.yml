@@ -2,7 +2,7 @@ name: deploy app
 
 env:
   APP_NAME: game-server
-  NAMESPACE: game-app
+  NAMESPACE: prod
   DOCKER_IMAGE: game-server
 
 on:
