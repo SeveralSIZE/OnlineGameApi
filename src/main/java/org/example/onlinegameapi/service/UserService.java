@@ -7,6 +7,6 @@ import java.util.List;
 import java.util.UUID;
 
 public interface UserService {
-    UserResponse getMe(UUID id);
+    UserResponse getMe(String id);
     List<UserCardResponse> getMyInventory(UUID id);
 }

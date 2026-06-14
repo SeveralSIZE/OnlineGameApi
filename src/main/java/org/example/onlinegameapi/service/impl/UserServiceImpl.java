@@ -34,8 +34,8 @@ public class UserServiceImpl implements UserService {
     private final JdbcTemplate jdbcTemplate;
 
     @Override
-    public UserResponse getMe(UUID id) {
-        String sql = "SELECT id, username, email, role, coins FROM users WHERE id = '" + id.toString() + "'";
+    public UserResponse getMe(String id) {
+        String sql = "SELECT id, username, email, role, coins FROM users WHERE id = '" + id + "'";
 
         User user = jdbcTemplate.queryForObject(sql, (rs, rn) -> {
             User u = new User();

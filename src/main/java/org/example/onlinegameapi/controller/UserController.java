@@ -19,7 +19,7 @@ public class UserController {
 
     @GetMapping("/me")
     public ResponseEntity<UserResponse> getMe(Authentication authentication){
-        UUID userId = (UUID) authentication.getPrincipal();
+        String userId = (String) authentication.getPrincipal();
         return ResponseEntity.ok(service.getMe(userId));
     }
 
