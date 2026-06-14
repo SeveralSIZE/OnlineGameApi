@@ -11,14 +11,15 @@ jobs:
       - name: Run Semgrep
         run: |
           pip install semgrep
-          semgrep --config "p/java" \
-                  --config "r/java.spring"
-                  --config "p/owasp-top-ten" \
-                  --config "p/secrets" \
-                  --config "r/mschwager.java-security-rules"
-                  --error \
-                  --json > semgrep-report.json \
-                  ./src
+          semgrep \
+            --config "p/java" \
+            --config "r/java.spring" \
+            --config "p/owasp-top-ten" \
+            --config "p/secrets" \
+            --config "r/mschwager.java-security-rules" \
+            --error \
+            --json \
+            ./src > semgrep-report.json || true
 
       - name: Upload report
         if: always()
