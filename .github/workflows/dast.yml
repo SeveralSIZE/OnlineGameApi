@@ -3,7 +3,7 @@ name: DAST
 on: [push, pull_request]
 
 jobs:
-  semgrep:
+  owasp_zap:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
