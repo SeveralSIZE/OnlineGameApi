@@ -12,8 +12,10 @@ jobs:
         run: |
           pip install semgrep
           semgrep --config "p/java" \
+                  --config "r/java.spring"
                   --config "p/owasp-top-ten" \
                   --config "p/secrets" \
+                  --config "r/mschwager.java-security-rules"
                   --error \
                   --json > semgrep-report.json \
                   ./src
