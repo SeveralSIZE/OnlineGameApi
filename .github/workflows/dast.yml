@@ -10,9 +10,12 @@ jobs:
 
       - name: Start application
         run: |
-          docker-compose up
-          sleep 30
-          
+          docker compose up -d --build
+          for i in {1..30}; do
+            curl -sf http://localhost:8080/actuator/health && break
+            echo "Attempt $i — waiting..."
+            sleep 5
+          done      
 
       - name: Run OWASP ZAP Baseline Scan
         uses: zaproxy/action-baseline@v0.12.0
@@ -42,4 +45,4 @@ jobs:
 
       - name: Stop application
         if: always()
-        run: docker-compose down
+        run: docker compose down
