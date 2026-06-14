@@ -12,7 +12,6 @@ jobs:
         run: |
           pip install semgrep
           semgrep --config "p/java" \
-                  --config .semgrep/rules.yaml \
                   --error \
                   --json > semgrep-report.json \
                   ./src
