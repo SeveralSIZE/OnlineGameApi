@@ -11,10 +11,6 @@ jobs:
       - name: Start application
         run: |
           docker compose up -d --build
-          for i in {1..30}; do
-            curl -sf http://localhost:8080/actuator/health && break
-            echo "Attempt $i — waiting..."
-            sleep 5
           done      
 
       - name: Run OWASP ZAP Baseline Scan
@@ -22,7 +18,7 @@ jobs:
         with:
           target: 'http://localhost:8080'
           rules_file_name: '.zap/rules.tsv'
-          cmd_options: '-a -j -l WARN'
+          cmd_options: '-a -j -l WARN -n openapi -O http://localhost:8080/v3/api-docs'
           fail_action: false
 
       - name: Run OWASP ZAP Full Scan
