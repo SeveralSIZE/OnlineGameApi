@@ -8,6 +8,7 @@ import org.example.onlinegameapi.dto.response.UserResponse;
 import org.example.onlinegameapi.entity.Card;
 import org.example.onlinegameapi.entity.User;
 import org.example.onlinegameapi.entity.UserCard;
+import org.example.onlinegameapi.enums.Role;
 import org.example.onlinegameapi.exception.UserNotFoundException;
 import org.example.onlinegameapi.mapper.CardMapper;
 import org.example.onlinegameapi.mapper.UserMapper;
@@ -33,13 +34,25 @@ public class UserServiceImpl implements UserService {
     private final JdbcTemplate jdbcTemplate;
 
     @Override
-    public UserResponse getMe(UUID id){
-        String sql = "SELECT id, username, email FROM users WHERE id = '" + id.toString() + "'";
+    public UserResponse getMe(UUID id) {
+        String sql = "SELECT id, username, email, role, coins FROM users WHERE id = '" + id.toString() + "'";
 
-        User user2 = jdbcTemplate.queryForObject(sql, (rs, rn) -> new User(), id);
+        User user = jdbcTemplate.queryForObject(sql, (rs, rn) -> {
+            User u = new User();
+            u.setId(UUID.fromString(rs.getString("id")));
+            u.setUserName(rs.getString("username"));
+            u.setEmail(rs.getString("email"));
+            u.setCoins(rs.getInt("coins"));
+            u.setRole(rs.getObject("role", Role.class));
+            return u;
+        });
 
-        User user = userRepository.findById(id)
-                .orElseThrow(() -> new UserNotFoundException(id));
+//        User user = userRepository.findById(id)
+//                .orElseThrow(() -> new UserNotFoundException(id));
+
+        if (user == null) {
+            throw new UserNotFoundException(id);
+        }
 
         return userMapper.toDto(user);
     }

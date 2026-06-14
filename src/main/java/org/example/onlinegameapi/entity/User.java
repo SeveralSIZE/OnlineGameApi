@@ -19,7 +19,6 @@ import java.util.UUID;
 public class User {
     @Id
     @Column(name = "id", nullable = false, updatable = false)
-    @Setter(AccessLevel.NONE)
     private UUID id;
 
     @Column(name = "creation_date", updatable = false)
