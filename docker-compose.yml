@@ -25,12 +25,5 @@ services:
       postgres:
         condition: service_healthy
 
-  client:
-    build: ./OnlineGameClient
-    ports:
-      - "80:80"
-    depends_on:
-      - app
-
 volumes:
   pgdata:
