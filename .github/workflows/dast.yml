@@ -17,7 +17,7 @@ jobs:
         with:
           target: 'http://localhost:8080'
           rules_file_name: '.zap/rules.tsv'
-          cmd_options: '-a -j -l WARN -n openapi -O http://localhost:8080/v3/api-docs'
+          cmd_options: '-a -j -l WARN -z "-config openapi.url=http://localhost:8080/v3/api-docs"'
           fail_action: false
 
       - name: Run OWASP ZAP Full Scan
@@ -25,7 +25,7 @@ jobs:
         with:
           target: 'http://localhost:8080'
           rules_file_name: '.zap/rules.tsv'
-          cmd_options: '-a -j'
+          cmd_options: '-z "-config openapi.url=http://localhost:8080/v3/api-docs"'
           fail_action: false
 
       - name: Upload ZAP Report
