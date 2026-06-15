@@ -1,0 +1,42 @@
+name: Dependency Check
+
+on: [push, pull_request]
+
+jobs:
+  dependency-check:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      security-events: write
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up JDK 17
+        uses: actions/setup-java@v4
+        with:
+          java-version: '17'
+          distribution: 'temurin'
+
+      - name: Run OWASP Dependency-Check
+        uses: dependency-check/Dependency-Check_Action@main
+        with:
+          project: 'OnlineGameApi'
+          path: '.'
+          format: 'ALL'
+          out: 'dependency-check-report'
+          args: >
+            --enableRetired
+            --enableExperimental
+            --nvdApiKey ${{ secrets.NVD_API_KEY }}
+            --scan ./pom.xml
+            --scan ./client/package-lock.json
+            --failOnCVSS 7
+            --suppression .dc-suppression.xml
+
+      - name: Upload report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: dependency-check-report
+          path: dependency-check-report/
