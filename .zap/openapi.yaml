@@ -1,0 +1,21 @@
+env:
+  contexts:
+    - name: "Default Context"
+      urls:
+        - "http://localhost:8080"
+jobs:
+  - type: openapi
+    parameters:
+      apiUrl: "http://localhost:8080/v3/api-docs"
+      targetUrl: "http://localhost:8080"
+  - type: spider
+    parameters:
+      url: "http://localhost:8080"
+  - type: spiderAjax
+    parameters:
+      url: "http://localhost:8080"
+  - type: passiveScan-wait
+  - type: report
+    parameters:
+      template: "traditional-json"
+      reportFile: "report_json.json"
